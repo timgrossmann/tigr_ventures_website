@@ -151,19 +151,108 @@ a {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse at 50% 0%, rgba(201, 169, 98, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(201, 169, 98, 0.04) 0%, transparent 40%);
+        radial-gradient(ellipse at 50% 30%, rgba(201, 169, 98, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(201, 169, 98, 0.08) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 20%, rgba(201, 169, 98, 0.06) 0%, transparent 35%);
     animation: backgroundPulse 8s ease-in-out infinite;
+}
+
+/* Golden accent line */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 120px;
+    background: linear-gradient(to bottom, transparent, var(--color-gold), transparent);
+    opacity: 0.4;
+    animation: lineGlow 3s ease-in-out infinite;
+}
+
+/* Floating golden orb */
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(201, 169, 98, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatOrb 12s ease-in-out infinite;
+    pointer-events: none;
 }
 
 @keyframes backgroundPulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes lineGlow {
+    0%, 100% { opacity: 0.4; height: 120px; }
+    50% { opacity: 0.8; height: 140px; }
+}
+
+@keyframes floatOrb {
+    0%, 100% { transform: translate(0, 0); }
+    25% { transform: translate(-20px, 30px); }
+    50% { transform: translate(10px, -20px); }
+    75% { transform: translate(-10px, -10px); }
+}
+
+.hero-accent-lines {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.accent-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    opacity: 0.15;
+}
+
+.accent-line-1 {
+    top: 25%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    animation: lineSweep 8s ease-in-out infinite;
+}
+
+.accent-line-2 {
+    bottom: 30%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    animation: lineSweep 8s ease-in-out infinite 4s;
+}
+
+@keyframes lineSweep {
+    0%, 100% { opacity: 0; transform: scaleX(0); }
+    50% { opacity: 0.2; transform: scaleX(1); }
 }
 
 .hero-content {
     position: relative;
     max-width: 900px;
+}
+
+.hero-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    border-radius: 2px;
+    margin-bottom: var(--spacing-lg);
+    background: rgba(201, 169, 98, 0.05);
 }
 
 .hero-title {
@@ -174,11 +263,35 @@ a {
     color: var(--color-text);
 }
 
+.gold-text {
+    color: var(--color-gold);
+    position: relative;
+}
+
+.gold-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+    opacity: 0.5;
+}
+
 .hero-subtitle {
     font-size: clamp(16px, 2vw, 20px);
     font-weight: 300;
     color: var(--color-text-muted);
     letter-spacing: 0.02em;
+}
+
+.hero-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--color-gold);
+    margin: var(--spacing-lg) auto 0;
+    opacity: 0.6;
 }
 
 .scroll-indicator {
