@@ -380,6 +380,78 @@ a {
 }
 
 /* ================================================
+   Stats Section
+   ================================================ */
+.stats {
+    border-top: 1px solid var(--color-border);
+}
+
+.stats-intro {
+    max-width: var(--max-width-narrow);
+    margin-bottom: var(--spacing-xl);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.stat-card {
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-elevated);
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+    border-color: rgba(201, 169, 98, 0.3);
+}
+
+.stat-number {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    color: var(--color-gold);
+    line-height: 1;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+}
+
+.stat-label {
+    font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.stat-source {
+    font-size: 12px;
+    color: var(--color-text-subtle);
+    margin-top: var(--spacing-sm);
+    letter-spacing: 0.02em;
+}
+
+.stats-conclusion {
+    max-width: var(--max-width-narrow);
+}
+
+.stats-takeaway {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-text);
+}
+
+/* Stagger animation for stat cards */
+.stat-card.fade-in:nth-child(2) { transition-delay: 0.1s; }
+.stat-card.fade-in:nth-child(3) { transition-delay: 0.2s; }
+.stat-card.fade-in:nth-child(4) { transition-delay: 0.3s; }
+
+/* ================================================
    Philosophy Section
    ================================================ */
 .philosophy {
@@ -396,6 +468,13 @@ a {
     line-height: 1.8;
     color: var(--color-text);
     margin-bottom: 0;
+}
+
+.philosophy-text-secondary {
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-text-muted);
 }
 
 .philosophy-accent {
@@ -587,6 +666,53 @@ a {
 
 .step-description {
     font-size: 15px;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+}
+
+/* ================================================
+   Partner Profile Section
+   ================================================ */
+.partner-profile {
+    border-top: 1px solid var(--color-border);
+}
+
+.partner-content {
+    max-width: var(--max-width-narrow);
+}
+
+.partner-traits {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.partner-trait {
+    display: flex;
+    align-items: baseline;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) 0;
+}
+
+.trait-marker {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    background: var(--color-gold);
+    border-radius: 50%;
+    margin-top: 10px;
+}
+
+.trait-text {
+    font-size: clamp(16px, 2vw, 18px);
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-text);
+}
+
+.partner-note {
+    font-size: 16px;
     color: var(--color-text-muted);
     line-height: 1.7;
 }
@@ -860,6 +986,10 @@ a {
         display: none;
     }
 
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .expertise-grid {
         grid-template-columns: 1fr;
     }
@@ -905,6 +1035,10 @@ a {
     .hero-badge {
         font-size: 10px;
         padding: 6px 12px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 
     .section-badge {
