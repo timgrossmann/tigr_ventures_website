@@ -110,10 +110,24 @@ a {
 }
 
 .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.2em;
     color: var(--color-gold);
+}
+
+.nav-logo-mark {
+    display: block;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+.nav-logo-text {
+    transition: opacity var(--transition-fast);
 }
 
 .nav-cta {
@@ -916,11 +930,21 @@ a {
 }
 
 .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.2em;
     color: var(--color-gold);
     opacity: 0.8;
+}
+
+.footer-logo-mark {
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
 }
 
 .footer-links {
@@ -940,6 +964,152 @@ a {
 .footer-year {
     font-size: 13px;
     color: var(--color-text-subtle);
+}
+
+/* ================================================
+   Imprint Modal
+   ================================================ */
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: modalFade var(--transition-base);
+}
+
+.modal-dialog {
+    position: relative;
+    width: 100%;
+    max-width: 860px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    animation: modalRise var(--transition-base);
+}
+
+@keyframes modalFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalRise {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.modal-close:hover {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.modal-logo-mark {
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-text);
+}
+
+.modal-title-sub {
+    color: var(--color-text-muted);
+    font-weight: 300;
+}
+
+.imprint-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.imprint-col + .imprint-col {
+    padding-left: var(--spacing-lg);
+    border-left: 1px solid var(--color-border);
+}
+
+.imprint-lang {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-md);
+}
+
+.imprint-heading {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-top: var(--spacing-md);
+    margin-bottom: 4px;
+}
+
+.imprint-block {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+}
+
+.imprint-link {
+    color: var(--color-gold);
+}
+
+.imprint-link:hover {
+    color: var(--color-gold-hover);
+}
+
+.imprint-todo {
+    color: var(--color-text-subtle);
+    font-style: italic;
 }
 
 /* ================================================
@@ -1018,6 +1188,22 @@ a {
 
     .footer-links {
         order: -1;
+    }
+
+    .imprint-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .imprint-col + .imprint-col {
+        padding-left: 0;
+        padding-top: var(--spacing-md);
+        border-left: none;
+        border-top: 1px solid var(--color-border);
+    }
+
+    .modal-dialog {
+        padding: var(--spacing-lg) var(--spacing-md) var(--spacing-md);
     }
 }
 

@@ -17,13 +17,16 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
-            <a href="#" class="nav-logo">TIGR VENTURES</a>
+            <a href="#" class="nav-logo" aria-label="Tigr Ventures — home">
+                <img src="assets/emblem.svg" alt="" class="nav-logo-mark" width="32" height="32">
+                <span class="nav-logo-text">TIGR VENTURES</span>
+            </a>
             <a href="#inquiry" class="nav-cta">Get in Touch</a>
         </div>
     </nav>
@@ -293,11 +296,110 @@
         <div class="footer-line"></div>
         <div class="container">
             <div class="footer-content">
-                <span class="footer-logo">TIGR VENTURES</span>
+                <span class="footer-logo">
+                    <img src="assets/emblem.svg" alt="" class="footer-logo-mark" width="24" height="24">
+                    TIGR VENTURES
+                </span>
+                <div class="footer-links">
+                    <a href="#imprint" class="footer-link" id="imprintLink">Imprint / Impressum</a>
+                </div>
                 <span class="footer-year"></span>
             </div>
         </div>
     </footer>
+
+    <!-- Imprint / Impressum Modal -->
+    <div class="modal" id="imprintModal" role="dialog" aria-modal="true" aria-labelledby="imprintTitle" hidden>
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-dialog" role="document">
+            <button type="button" class="modal-close" aria-label="Close" data-close>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <img src="assets/emblem.svg" alt="" class="modal-logo-mark" width="40" height="40">
+                <h2 class="modal-title" id="imprintTitle">Impressum <span class="modal-title-sub">/ Imprint</span></h2>
+            </div>
+            <div class="modal-body">
+                <div class="imprint-grid">
+                    <!-- German -->
+                    <div class="imprint-col" lang="de">
+                        <h3 class="imprint-lang">Deutsch</h3>
+
+                        <h4 class="imprint-heading">Angaben gemäß § 5 DDG</h4>
+                        <p class="imprint-block">
+                            Tigr Ventures UG (haftungsbeschränkt)<br>
+                            Kuhnkestraße 6<br>
+                            24118 Kiel<br>
+                            Deutschland
+                        </p>
+
+                        <h4 class="imprint-heading">Vertreten durch</h4>
+                        <p class="imprint-block">Geschäftsführer: Tim Grossmann</p>
+
+                        <h4 class="imprint-heading">Kontakt</h4>
+                        <p class="imprint-block">
+                            E-Mail: <a href="mailto:tim@tigr.ventures" class="imprint-link">tim@tigr.ventures</a>
+                        </p>
+
+                        <h4 class="imprint-heading">Registereintrag</h4>
+                        <p class="imprint-block">
+                            Eingetragen im Handelsregister<br>
+                            Registergericht: Amtsgericht Kiel<br>
+                            Registernummer: HRB 25140
+                        </p>
+
+                        <h4 class="imprint-heading">Umsatzsteuer-ID</h4>
+                        <p class="imprint-block">
+                            Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br>
+                            DE421916464
+                        </p>
+
+                        <h4 class="imprint-heading">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h4>
+                        <p class="imprint-block">Tim Grossmann (Anschrift wie oben)</p>
+                    </div>
+
+                    <!-- English -->
+                    <div class="imprint-col" lang="en">
+                        <h3 class="imprint-lang">English</h3>
+
+                        <h4 class="imprint-heading">Information pursuant to § 5 DDG</h4>
+                        <p class="imprint-block">
+                            Tigr Ventures UG (haftungsbeschränkt)<br>
+                            Kuhnkestraße 6<br>
+                            24118 Kiel<br>
+                            Germany
+                        </p>
+
+                        <h4 class="imprint-heading">Represented by</h4>
+                        <p class="imprint-block">Managing Director: Tim Grossmann</p>
+
+                        <h4 class="imprint-heading">Contact</h4>
+                        <p class="imprint-block">
+                            Email: <a href="mailto:tim@tigr.ventures" class="imprint-link">tim@tigr.ventures</a>
+                        </p>
+
+                        <h4 class="imprint-heading">Commercial register</h4>
+                        <p class="imprint-block">
+                            Registered in the commercial register<br>
+                            Register court: Local Court (Amtsgericht) Kiel<br>
+                            Registration number: HRB 25140
+                        </p>
+
+                        <h4 class="imprint-heading">VAT</h4>
+                        <p class="imprint-block">
+                            VAT identification number pursuant to § 27a UStG:<br>
+                            DE421916464
+                        </p>
+
+                        <h4 class="imprint-heading">Responsible for content pursuant to § 18 (2) MStV</h4>
+                        <p class="imprint-block">Tim Grossmann (address as above)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
