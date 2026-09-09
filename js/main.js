@@ -1,171 +1,118 @@
 /**
- * TIGR VENTURES - Main JavaScript
+ * TIGR VENTURES — main.js
  */
-
-(function() {
+(function () {
     'use strict';
 
-    // ================================================
-    // Navigation scroll effect
-    // ================================================
-    const nav = document.getElementById('nav');
-    let lastScrollY = 0;
+    document.documentElement.classList.remove('no-js');
 
-    function handleNavScroll() {
-        const currentScrollY = window.scrollY;
-
-        if (currentScrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-
-        lastScrollY = currentScrollY;
+    // Header state on scroll
+    var top = document.getElementById('top');
+    function onScroll() {
+        if (window.scrollY > 24) top.classList.add('scrolled');
+        else top.classList.remove('scrolled');
     }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 
-    window.addEventListener('scroll', handleNavScroll, { passive: true });
-
-    // ================================================
-    // Smooth scroll for anchor links
-    // ================================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+    // Anchor offset for sticky header
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+            var href = this.getAttribute('href');
+            if (href === '#' || href === '#imprint') return;
+            var target = document.querySelector(href);
+            if (!target) return;
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-
-            if (target) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
+            var y = target.getBoundingClientRect().top + window.scrollY - top.offsetHeight;
+            window.scrollTo({ top: y, behavior: 'smooth' });
         });
     });
 
-    // ================================================
-    // Fade-in animations on scroll
-    // ================================================
-    const fadeElements = document.querySelectorAll('.fade-in');
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px 0px -100px 0px',
-        threshold: 0.1
-    };
-
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                fadeObserver.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    fadeElements.forEach(element => {
-        fadeObserver.observe(element);
-    });
-
-    // ================================================
-    // Form handling
-    // ================================================
-    const form = document.getElementById('inquiryForm');
-    const formSuccess = document.getElementById('formSuccess');
-
-    if (form) {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const submitButton = form.querySelector('.form-submit');
-            const originalText = submitButton.textContent;
-
-            // Show loading state
-            submitButton.textContent = 'Sending...';
-            submitButton.disabled = true;
-
-            try {
-                const formData = new FormData(form);
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    // Show success message
-                    form.classList.add('hidden');
-                    formSuccess.classList.add('show');
-                } else {
-                    throw new Error('Form submission failed');
+    // Reveal on scroll
+    var reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    io.unobserve(entry.target);
                 }
-            } catch (error) {
-                // Reset button on error
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-                alert('There was an issue sending your inquiry. Please try again or email us directly.');
-            }
+            });
+        }, { rootMargin: '0px 0px -8% 0px', threshold: 0.1 });
+        reveals.forEach(function (el) { io.observe(el); });
+    } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+    }
+
+    // Hero video: load lazily, fade in over the still once it can play
+    var video = document.querySelector('.hero-video');
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (video && !reduceMotion && video.dataset.src) {
+        var conn = navigator.connection;
+        var slow = conn && (conn.saveData || /2g/.test(conn.effectiveType || ''));
+        if (!slow) {
+            video.src = video.dataset.src;
+            video.load();
+            video.addEventListener('canplaythrough', function () {
+                video.play().then(function () {
+                    video.classList.add('ready');
+                }).catch(function () {});
+            }, { once: true });
+        }
+    }
+
+    // Contact form (Formspree)
+    var form = document.getElementById('inquiryForm');
+    var success = document.getElementById('formSuccess');
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var button = form.querySelector('button[type="submit"]');
+            var label = button.textContent;
+            button.textContent = 'Sending…';
+            button.disabled = true;
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' }
+            }).then(function (res) {
+                if (!res.ok) throw new Error('Submission failed');
+                form.hidden = true;
+                success.hidden = false;
+            }).catch(function () {
+                button.textContent = label;
+                button.disabled = false;
+                alert('That did not go through. Please try again or email tim@tigr.ventures directly.');
+            });
         });
     }
 
-    // ================================================
     // Imprint modal
-    // ================================================
-    const imprintModal = document.getElementById('imprintModal');
-    const imprintLink = document.getElementById('imprintLink');
-    let lastFocused = null;
+    var modal = document.getElementById('imprintModal');
+    var imprintLink = document.getElementById('imprintLink');
+    var lastFocused = null;
 
     function openModal() {
-        if (!imprintModal) return;
         lastFocused = document.activeElement;
-        imprintModal.hidden = false;
+        modal.hidden = false;
         document.body.style.overflow = 'hidden';
-        const closeBtn = imprintModal.querySelector('.modal-close');
-        if (closeBtn) closeBtn.focus();
+        var close = modal.querySelector('.modal-close');
+        if (close) close.focus();
     }
-
     function closeModal() {
-        if (!imprintModal || imprintModal.hidden) return;
-        imprintModal.hidden = true;
+        if (modal.hidden) return;
+        modal.hidden = true;
         document.body.style.overflow = '';
-        if (lastFocused && typeof lastFocused.focus === 'function') {
-            lastFocused.focus();
-        }
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+    }
+    if (imprintLink && modal) {
+        imprintLink.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+        modal.querySelectorAll('[data-close]').forEach(function (el) { el.addEventListener('click', closeModal); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
     }
 
-    if (imprintLink) {
-        imprintLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            openModal();
-        });
-    }
-
-    if (imprintModal) {
-        imprintModal.querySelectorAll('[data-close]').forEach(el => {
-            el.addEventListener('click', closeModal);
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
-    }
-
-    // ================================================
     // Footer year
-    // ================================================
-    const footerYear = document.querySelector('.footer-year');
-    if (footerYear) {
-        footerYear.textContent = new Date().getFullYear();
-    }
-
-    // ================================================
-    // Prevent FOUC (Flash of Unstyled Content)
-    // ================================================
-    document.documentElement.classList.add('js-loaded');
-
+    var year = document.querySelector('.footer-year');
+    if (year) year.textContent = new Date().getFullYear();
 })();

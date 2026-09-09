@@ -1,310 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tigr Ventures partners with domain experts to build AI products they co-own. Joint ventures, not vendor relationships.">
-    <meta name="theme-color" content="#0a0a0a">
+    <meta name="description" content="Tigr Ventures is Tim Grossmann, AI product builder in Kiel, Germany. Prototypes in weeks, production AI products without an agency in between.">
+    <meta name="theme-color" content="#fff3f3">
 
-    <title>Tigr Ventures | AI Products Built With Domain Experts</title>
+    <title>Tigr Ventures | AI Product Builder</title>
 
-    <!-- Fonts -->
+    <meta property="og:title" content="Tigr Ventures | AI Product Builder">
+    <meta property="og:description" content="Tim Grossmann designs, builds and ships AI products for companies. Alone, from Kiel, in weeks rather than quarters.">
+    <meta property="og:image" content="https://tigr.ventures/assets/hero-1536.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tigr.ventures/">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav" id="nav">
-        <div class="nav-container">
-            <a href="#" class="nav-logo" aria-label="Tigr Ventures — home">
-                <img src="assets/emblem.svg" alt="" class="nav-logo-mark" width="32" height="32">
-                <span class="nav-logo-text">TIGR VENTURES</span>
-            </a>
-            <a href="#inquiry" class="nav-cta">Get in Touch</a>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <div class="hero-background"></div>
-        <div class="hero-accent-lines">
-            <span class="accent-line accent-line-1"></span>
-            <span class="accent-line accent-line-2"></span>
-        </div>
-        <div class="hero-content">
-            <div class="hero-badge fade-in">AI Venture Studio</div>
-            <h1 class="hero-title fade-in">We turn domain expertise into <br><span class="gold-text">AI products you co-own.</span></h1>
-            <p class="hero-subtitle fade-in">You bring the knowledge. We build the product. We both own the outcome.</p>
-            <div class="hero-divider fade-in"></div>
-        </div>
-        <div class="scroll-indicator fade-in">
-            <span></span>
-        </div>
-    </section>
+    <header class="top" id="top">
+        <a href="#" class="brand" aria-label="Tigr Ventures, home">
+            <img src="assets/emblem.svg" alt="" width="28" height="28">
+            <span>Tigr Ventures</span>
+        </a>
+        <nav class="top-nav" aria-label="Main">
+            <a href="#build">What I build</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-    <!-- The Landscape Section -->
-    <section class="section stats" id="landscape">
-        <div class="section-glow section-glow-right"></div>
-        <div class="container">
-            <div class="stats-intro fade-in">
-                <div class="section-badge">The Landscape</div>
-                <h2 class="section-title">Most AI projects fail. The data is unambiguous.</h2>
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="hero">
+            <h1 class="hero-title">AI Product Builder</h1>
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <p class="hero-lead">I'm Tim Grossmann. I design, build and ship AI products for companies. Alone, from Kiel, in weeks rather than quarters.</p>
+                    <a href="#contact" class="btn">Start a project</a>
+                </div>
+                <figure class="hero-figure">
+                    <picture>
+                        <source srcset="assets/hero-960.webp 960w, assets/hero-1536.webp 1536w" sizes="(max-width: 760px) 100vw, 64vw" type="image/webp">
+                        <img src="assets/hero-1536.jpg" alt="A matte navy block with three diagonal grooves revealing a deep red interior, standing on pale paper." width="1536" height="1024" fetchpriority="high">
+                    </picture>
+                    <video class="hero-video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" data-src="assets/hero.mp4"></video>
+                </figure>
             </div>
-            <div class="stats-grid">
-                <div class="stat-card fade-in">
-                    <span class="stat-number">87%</span>
-                    <span class="stat-label">of AI projects never make it to production</span>
-                    <span class="stat-source">RAND, MIT Sloan</span>
-                </div>
-                <div class="stat-card fade-in">
-                    <span class="stat-number">42%</span>
-                    <span class="stat-label">of companies abandoned most AI initiatives in 2025</span>
-                    <span class="stat-source">S&P Global</span>
-                </div>
-                <div class="stat-card fade-in">
-                    <span class="stat-number">30%</span>
-                    <span class="stat-label">of GenAI projects abandoned after proof of concept</span>
-                    <span class="stat-source">Gartner, 2024</span>
-                </div>
-                <div class="stat-card fade-in">
-                    <span class="stat-number">2x</span>
-                    <span class="stat-label">higher returns when workflows are redesigned before selecting technology</span>
-                    <span class="stat-source">McKinsey</span>
-                </div>
-            </div>
-            <div class="stats-conclusion fade-in">
-                <p class="stats-takeaway">The pattern is consistent: AI fails when it's treated as a technology project. It succeeds when it's treated as a <span class="gold-text-inline">domain problem</span>.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- The Model Section -->
-    <section class="section philosophy" id="model">
-        <div class="section-glow section-glow-left"></div>
-        <div class="container">
-            <div class="philosophy-content fade-in">
-                <div class="section-badge">The Model</div>
-                <h2 class="section-title">Joint ventures, not vendor relationships.</h2>
-                <p class="philosophy-text">
-                    Tigr Ventures partners with domain experts to build AI-powered products. You bring deep knowledge of your field. We bring the technical execution to turn that knowledge into software. We co-own what we build.
-                </p>
-                <div class="gold-divider"></div>
-                <p class="philosophy-text-secondary">
-                    No dev teams to manage. No six-month discovery phases. No bloated SOWs. One operator, fully AI-native, building with you as a co-founder, not for you as a client.
-                </p>
-                <div class="gold-divider"></div>
-                <p class="philosophy-accent">Skin in the game. On both sides.</p>
-            </div>
-        </div>
-    </section>
+        <!-- What I build -->
+        <section class="block" id="build">
+            <h2 class="label">What I build</h2>
+            <ol class="cols cols-3">
+                <li class="reveal">
+                    <h3>Prototype</h3>
+                    <p>A working prototype in two to four weeks, on your data. You find out early whether the idea holds.</p>
+                </li>
+                <li class="reveal">
+                    <h3>Product</h3>
+                    <p>The full build: interface, model pipeline, infrastructure, launch. Ready for paying customers.</p>
+                </li>
+                <li class="reveal">
+                    <h3>AI inside</h3>
+                    <p>AI in the software you already run. An assistant for your team, search that actually finds things, the paperwork nobody wants to do.</p>
+                </li>
+            </ol>
+        </section>
 
-    <!-- Focus Section -->
-    <section class="section expertise" id="expertise">
-        <div class="section-glow section-glow-right"></div>
-        <div class="container">
-            <div class="section-badge fade-in">Why It Works</div>
-            <h2 class="section-title fade-in">Designed to beat the odds.</h2>
-            <div class="expertise-grid">
-                <div class="expertise-card fade-in">
-                    <div class="card-accent"></div>
-                    <div class="expertise-icon">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M24 4L28 16H40L30 24L34 36L24 28L14 36L18 24L8 16H20L24 4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="expertise-title">Domain Expertise Embedded</h3>
-                    <p class="expertise-description">Embedded models report <span class="gold-text-inline">25% higher success rates</span>. We don't bolt AI onto your business from the outside. Your knowledge is the product's core, not an afterthought gathered in a requirements doc.</p>
-                    <div class="card-line"></div>
+        <!-- Statement -->
+        <section class="statement-block" id="how">
+            <p class="statement reveal"><span>One builder. No handoffs.</span> <span>Working software in weeks.</span></p>
+            <dl class="block-grid">
+                <div class="reveal">
+                    <dt>Built directly</dt>
+                    <dd>Design, code and deployment come from the person you talk to. Nothing gets lost between a sales call and a dev team.</dd>
                 </div>
-                <div class="expertise-card fade-in">
-                    <div class="card-accent"></div>
-                    <div class="expertise-icon">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="8" y="8" width="32" height="32" rx="4" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M8 16H40" stroke="currentColor" stroke-width="1.5"/>
-                            <circle cx="14" cy="12" r="1.5" fill="currentColor"/>
-                            <circle cx="20" cy="12" r="1.5" fill="currentColor"/>
-                            <path d="M16 28L22 34L32 22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="expertise-title">Zero Overhead, Full Velocity</h3>
-                    <p class="expertise-description">No account managers. No project coordinators. No handoffs. One AI-native operator building directly with you. <span class="gold-text-inline">Decisions happen in hours</span>, not committee meetings.</p>
-                    <div class="card-line"></div>
+                <div class="reveal">
+                    <dt>AI-native</dt>
+                    <dd>I build with the same models and agents I put into your product. One person, the output of a team.</dd>
                 </div>
-                <div class="expertise-card fade-in">
-                    <div class="card-accent"></div>
-                    <div class="expertise-icon">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M24 14V24L30 30" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M24 4V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M24 40V44" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M4 24H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            <path d="M40 24H44" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3 class="expertise-title">Aligned Incentives</h3>
-                    <p class="expertise-description">We co-own what we build. <span class="gold-text-inline">When your product succeeds, we succeed.</span> This is the opposite of hourly billing, where the incentive is to take longer, not to ship better.</p>
-                    <div class="card-line"></div>
+                <div class="reveal">
+                    <dt>You own it</dt>
+                    <dd>Code, infrastructure, documentation. No lock-in, and no dependency on me to keep the lights on.</dd>
+                </div>
+            </dl>
+        </section>
+
+        <!-- Process -->
+        <section class="block" id="process">
+            <h2 class="label">From call to product</h2>
+            <ol class="rows">
+                <li class="reveal">
+                    <h3>A call</h3>
+                    <p>Thirty minutes. What you want to build, for whom, and why now. You leave with a clear yes, no, or not yet.</p>
+                </li>
+                <li class="reveal">
+                    <h3>A prototype</h3>
+                    <p>Two to four weeks, scope and price agreed up front. Working software you can put in front of real users.</p>
+                </li>
+                <li class="reveal">
+                    <h3>A product</h3>
+                    <p>I build it out, launch it and hand it over with code, docs and infrastructure. Your team runs it without me.</p>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Fit -->
+        <section class="block" id="fit">
+            <h2 class="label">Is this for you</h2>
+            <div class="fit">
+                <div class="reveal">
+                    <h3>A good fit</h3>
+                    <p>You know your market and see a specific problem AI could solve. You want something in users' hands this quarter. You would rather work with one accountable person than manage an agency.</p>
+                </div>
+                <div class="reveal">
+                    <h3>Not a fit</h3>
+                    <p>You need a strategy deck before you need software. You want AI in the pitch, not in the product. Your project needs a team of twenty. I will say so, and point you to one.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Process Section -->
-    <section class="section process" id="process">
-        <div class="section-glow section-glow-center"></div>
-        <div class="container">
-            <div class="process-content fade-in">
-                <div class="section-badge">How It Works</div>
-                <h2 class="section-title">From conversation to co-ownership.</h2>
-                <p class="process-intro">Every partnership starts the same way: understanding whether the fit is right.</p>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-marker">
-                            <span class="step-number">01</span>
-                            <div class="step-line"></div>
-                        </div>
-                        <div class="step-content">
-                            <h3 class="step-title">Evaluate the Fit</h3>
-                            <p class="step-description">We assess whether your domain expertise and our AI execution can produce something neither could alone. Not every idea is a fit. That honesty is the starting point.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-marker">
-                            <span class="step-number">02</span>
-                            <div class="step-line"></div>
-                        </div>
-                        <div class="step-content">
-                            <h3 class="step-title">Define the Product</h3>
-                            <p class="step-description">Together we scope a specific, buildable product. What does it do, who uses it, and what is the business model. No ambiguity.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-marker">
-                            <span class="step-number">03</span>
-                            <div class="step-line"></div>
-                        </div>
-                        <div class="step-content">
-                            <h3 class="step-title">Build and Iterate</h3>
-                            <p class="step-description">We build fast, starting with a working MVP. You validate with real domain knowledge. We iterate in tight cycles until the product works.</p>
-                        </div>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-marker">
-                            <span class="step-number">04</span>
-                        </div>
-                        <div class="step-content">
-                            <h3 class="step-title">Launch and Own</h3>
-                            <p class="step-description">The product goes to market. Revenue is shared. You own what we built together. No licensing traps, no dependency on us to keep the lights on.</p>
-                        </div>
-                    </div>
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="contact-inner">
+                <div class="contact-copy">
+                    <h2>Tell me what you want to build.</h2>
+                    <a class="contact-mail" href="mailto:tim@tigr.ventures">tim@tigr.ventures</a>
+                    <p>A few sentences are enough. I reply within 48 hours, usually with a proposal for a first call.</p>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Partner Profile Section -->
-    <section class="section partner-profile" id="partner">
-        <div class="section-glow section-glow-left"></div>
-        <div class="container">
-            <div class="partner-content fade-in">
-                <div class="section-badge">Who This Is For</div>
-                <h2 class="section-title">You might be the right partner if:</h2>
-                <div class="partner-traits">
-                    <div class="partner-trait">
-                        <span class="trait-marker"></span>
-                        <p class="trait-text">You have deep expertise in a specific domain and see an opportunity that AI could unlock.</p>
-                    </div>
-                    <div class="partner-trait">
-                        <span class="trait-marker"></span>
-                        <p class="trait-text">You want to own the product, not just buy a service.</p>
-                    </div>
-                    <div class="partner-trait">
-                        <span class="trait-marker"></span>
-                        <p class="trait-text">You're skeptical of AI hype but curious about what a focused, well-built product could do in your field.</p>
-                    </div>
-                    <div class="partner-trait">
-                        <span class="trait-marker"></span>
-                        <p class="trait-text">You're willing to invest your time and knowledge as a true collaborator, not hand off a spec and wait.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Inquiry Section -->
-    <section class="section inquiry" id="inquiry">
-        <div class="inquiry-glow"></div>
-        <div class="container">
-            <div class="inquiry-content fade-in">
-                <div class="section-badge">Start a Conversation</div>
-                <h2 class="inquiry-title">Interested in building together?</h2>
-                <div class="gold-divider gold-divider-center"></div>
-                <p class="inquiry-subtitle">Tell us about your domain and what you think AI could do in it.<br>No pitch decks required. Just a clear idea and real expertise.</p>
-
-                <form class="inquiry-form" action="https://formspree.io/f/xlgjwyka" method="POST" id="inquiryForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required autocomplete="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="organization">Domain / Industry</label>
-                            <input type="text" id="organization" name="organization" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
+                <form class="form" action="https://formspree.io/f/xlgjwyka" method="POST" id="inquiryForm">
+                    <div class="field">
+                        <label for="email">Your email</label>
                         <input type="email" id="email" name="email" required autocomplete="email">
                     </div>
-                    <div class="form-group">
-                        <label for="message">What is the opportunity you see?</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
+                    <div class="field">
+                        <label for="message">What do you want to build?</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="form-submit">
-                        <span>Start the Conversation</span>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <p class="form-note">We respond within 48 hours. Most conversations start with a 30-minute call.</p>
+                    <button type="submit" class="btn">Send</button>
                 </form>
 
-                <div class="form-success" id="formSuccess">
-                    <div class="success-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-                            <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="1.5"/>
-                            <path d="M16 24L22 30L32 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <p>Thank you for your inquiry.<br>We'll be in touch shortly.</p>
+                <div class="form-success" id="formSuccess" hidden>
+                    <p>Thanks. Your message is in. I will get back to you within 48 hours.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-line"></div>
-        <div class="container">
-            <div class="footer-content">
-                <span class="footer-logo">
-                    <img src="assets/emblem.svg" alt="" class="footer-logo-mark" width="24" height="24">
-                    TIGR VENTURES
-                </span>
-                <div class="footer-links">
-                    <a href="#imprint" class="footer-link" id="imprintLink">Imprint / Impressum</a>
-                </div>
+        <div class="footer-inner">
+            <p class="footer-brand">
+                <img src="assets/emblem.svg" alt="" width="20" height="20">
+                <span>Tigr Ventures<br>Kuhnkestraße 6, 24118 Kiel, Germany</span>
+            </p>
+            <p class="footer-links">
+                <a href="mailto:tim@tigr.ventures">tim@tigr.ventures</a>
+                <a href="#imprint" id="imprintLink">Imprint / Impressum</a>
                 <span class="footer-year"></span>
-            </div>
+            </p>
         </div>
     </footer>
 
@@ -313,89 +173,41 @@
         <div class="modal-backdrop" data-close></div>
         <div class="modal-dialog" role="document">
             <button type="button" class="modal-close" aria-label="Close" data-close>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                     <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                 </svg>
             </button>
-            <div class="modal-header">
-                <img src="assets/emblem.svg" alt="" class="modal-logo-mark" width="40" height="40">
-                <h2 class="modal-title" id="imprintTitle">Impressum <span class="modal-title-sub">/ Imprint</span></h2>
-            </div>
-            <div class="modal-body">
-                <div class="imprint-grid">
-                    <!-- German -->
-                    <div class="imprint-col" lang="de">
-                        <h3 class="imprint-lang">Deutsch</h3>
-
-                        <h4 class="imprint-heading">Angaben gemäß § 5 DDG</h4>
-                        <p class="imprint-block">
-                            Tigr Ventures UG (haftungsbeschränkt)<br>
-                            Kuhnkestraße 6<br>
-                            24118 Kiel<br>
-                            Deutschland
-                        </p>
-
-                        <h4 class="imprint-heading">Vertreten durch</h4>
-                        <p class="imprint-block">Geschäftsführer: Tim Grossmann</p>
-
-                        <h4 class="imprint-heading">Kontakt</h4>
-                        <p class="imprint-block">
-                            E-Mail: <a href="mailto:tim@tigr.ventures" class="imprint-link">tim@tigr.ventures</a>
-                        </p>
-
-                        <h4 class="imprint-heading">Registereintrag</h4>
-                        <p class="imprint-block">
-                            Eingetragen im Handelsregister<br>
-                            Registergericht: Amtsgericht Kiel<br>
-                            Registernummer: HRB 25140
-                        </p>
-
-                        <h4 class="imprint-heading">Umsatzsteuer-ID</h4>
-                        <p class="imprint-block">
-                            Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br>
-                            DE421916464
-                        </p>
-
-                        <h4 class="imprint-heading">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h4>
-                        <p class="imprint-block">Tim Grossmann (Anschrift wie oben)</p>
-                    </div>
-
-                    <!-- English -->
-                    <div class="imprint-col" lang="en">
-                        <h3 class="imprint-lang">English</h3>
-
-                        <h4 class="imprint-heading">Information pursuant to § 5 DDG</h4>
-                        <p class="imprint-block">
-                            Tigr Ventures UG (haftungsbeschränkt)<br>
-                            Kuhnkestraße 6<br>
-                            24118 Kiel<br>
-                            Germany
-                        </p>
-
-                        <h4 class="imprint-heading">Represented by</h4>
-                        <p class="imprint-block">Managing Director: Tim Grossmann</p>
-
-                        <h4 class="imprint-heading">Contact</h4>
-                        <p class="imprint-block">
-                            Email: <a href="mailto:tim@tigr.ventures" class="imprint-link">tim@tigr.ventures</a>
-                        </p>
-
-                        <h4 class="imprint-heading">Commercial register</h4>
-                        <p class="imprint-block">
-                            Registered in the commercial register<br>
-                            Register court: Local Court (Amtsgericht) Kiel<br>
-                            Registration number: HRB 25140
-                        </p>
-
-                        <h4 class="imprint-heading">VAT</h4>
-                        <p class="imprint-block">
-                            VAT identification number pursuant to § 27a UStG:<br>
-                            DE421916464
-                        </p>
-
-                        <h4 class="imprint-heading">Responsible for content pursuant to § 18 (2) MStV</h4>
-                        <p class="imprint-block">Tim Grossmann (address as above)</p>
-                    </div>
+            <h2 class="modal-title" id="imprintTitle">Impressum <span>/ Imprint</span></h2>
+            <div class="imprint-grid">
+                <div class="imprint-col" lang="de">
+                    <h3>Deutsch</h3>
+                    <h4>Angaben gemäß § 5 DDG</h4>
+                    <p>Tigr Ventures UG (haftungsbeschränkt)<br>Kuhnkestraße 6<br>24118 Kiel<br>Deutschland</p>
+                    <h4>Vertreten durch</h4>
+                    <p>Geschäftsführer: Tim Grossmann</p>
+                    <h4>Kontakt</h4>
+                    <p>E-Mail: <a href="mailto:tim@tigr.ventures">tim@tigr.ventures</a></p>
+                    <h4>Registereintrag</h4>
+                    <p>Eingetragen im Handelsregister<br>Registergericht: Amtsgericht Kiel<br>Registernummer: HRB 25140</p>
+                    <h4>Umsatzsteuer-ID</h4>
+                    <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br>DE421916464</p>
+                    <h4>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h4>
+                    <p>Tim Grossmann (Anschrift wie oben)</p>
+                </div>
+                <div class="imprint-col" lang="en">
+                    <h3>English</h3>
+                    <h4>Information pursuant to § 5 DDG</h4>
+                    <p>Tigr Ventures UG (haftungsbeschränkt)<br>Kuhnkestraße 6<br>24118 Kiel<br>Germany</p>
+                    <h4>Represented by</h4>
+                    <p>Managing Director: Tim Grossmann</p>
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:tim@tigr.ventures">tim@tigr.ventures</a></p>
+                    <h4>Commercial register</h4>
+                    <p>Registered in the commercial register<br>Register court: Local Court (Amtsgericht) Kiel<br>Registration number: HRB 25140</p>
+                    <h4>VAT</h4>
+                    <p>VAT identification number pursuant to § 27a UStG:<br>DE421916464</p>
+                    <h4>Responsible for content pursuant to § 18 (2) MStV</h4>
+                    <p>Tim Grossmann (address as above)</p>
                 </div>
             </div>
         </div>
