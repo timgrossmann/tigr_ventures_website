@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tigr Ventures is Tim Grossmann, AI product builder in Kiel, Germany. Prototypes in weeks, production AI products without an agency in between.">
-    <meta name="theme-color" content="#fff3f3">
+    <meta name="description" content="Tigr Ventures is an AI product builder in Kiel, Germany. One senior builder per product, from first prototype to production. In weeks, not quarters.">
+    <meta name="theme-color" content="#0a1118">
 
     <title>Tigr Ventures | AI Product Builder</title>
 
     <meta property="og:title" content="Tigr Ventures | AI Product Builder">
-    <meta property="og:description" content="Tim Grossmann designs, builds and ships AI products for companies. Alone, from Kiel, in weeks rather than quarters.">
-    <meta property="og:image" content="https://tigr.ventures/assets/hero-1536.jpg">
+    <meta property="og:description" content="Tigr Ventures designs, builds and ships AI products for companies. One senior builder per product. In weeks, not quarters.">
+    <meta property="og:image" content="https://tigr.ventures/assets/hero-poster.webp">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tigr.ventures/">
 
@@ -29,34 +29,37 @@
             <span>Tigr Ventures</span>
         </a>
         <nav class="top-nav" aria-label="Main">
-            <a href="#build">What I build</a>
+            <a href="#build">What we build</a>
             <a href="#process">Process</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
     <main>
-        <!-- Hero -->
-        <section class="hero" id="hero">
-            <h1 class="hero-title">AI Product Builder</h1>
-            <div class="hero-grid">
-                <div class="hero-copy">
-                    <p class="hero-lead">I'm Tim Grossmann. I design, build and ship AI products for companies. Alone, from Kiel, in weeks rather than quarters.</p>
-                    <a href="#contact" class="btn">Start a project</a>
+        <!-- Hero: pinned stage, sequence scrubbed by scroll -->
+        <section class="hero" id="hero" data-frames="72" data-seq="assets/seq">
+            <div class="hero-stage">
+                <picture class="hero-poster">
+                    <source srcset="assets/hero-poster-768.webp 768w, assets/hero-poster.webp 1536w" sizes="100vw" type="image/webp">
+                    <img src="assets/hero-poster.webp" alt="" width="1536" height="1024" fetchpriority="high">
+                </picture>
+                <canvas class="hero-canvas" aria-hidden="true"></canvas>
+
+                <div class="hero-text">
+                    <h1 class="hero-title">AI Product Builder</h1>
+                    <div class="hero-row">
+                        <p class="hero-lead">Tigr Ventures designs, builds and ships AI products for companies. One senior builder per product, from first prototype to production. In weeks, not quarters.</p>
+                        <a href="#contact" class="btn">Start a project</a>
+                    </div>
                 </div>
-                <figure class="hero-figure">
-                    <picture>
-                        <source srcset="assets/hero-960.webp 960w, assets/hero-1536.webp 1536w" sizes="(max-width: 760px) 100vw, 64vw" type="image/webp">
-                        <img src="assets/hero-1536.jpg" alt="A matte navy block with three diagonal grooves revealing a deep red interior, standing on pale paper." width="1536" height="1024" fetchpriority="high">
-                    </picture>
-                    <video class="hero-video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" data-src="assets/hero.mp4"></video>
-                </figure>
+
+                <div class="hero-hint" aria-hidden="true"><span>Scroll</span><i></i></div>
             </div>
         </section>
 
-        <!-- What I build -->
+        <!-- What we build -->
         <section class="block" id="build">
-            <h2 class="label">What I build</h2>
+            <h2 class="label">What we build</h2>
             <ol class="cols cols-3">
                 <li class="reveal">
                     <h3>Prototype</h3>
@@ -75,21 +78,23 @@
 
         <!-- Statement -->
         <section class="statement-block" id="how">
-            <p class="statement reveal"><span>One builder. No handoffs.</span> <span>Working software in weeks.</span></p>
-            <dl class="block-grid">
+            <p class="statement reveal"><span>One builder per product.</span> <span>No handoffs. Working software in weeks.</span></p>
+            <div class="points">
+            <dl class="cols cols-3">
                 <div class="reveal">
                     <dt>Built directly</dt>
-                    <dd>Design, code and deployment come from the person you talk to. Nothing gets lost between a sales call and a dev team.</dd>
+                    <dd>Every product is built end to end by the person you talk to. Nothing gets lost between a sales call and a dev team.</dd>
                 </div>
                 <div class="reveal">
                     <dt>AI-native</dt>
-                    <dd>I build with the same models and agents I put into your product. One person, the output of a team.</dd>
+                    <dd>We build with the same models and agents we put into your product. One builder, the output of a team.</dd>
                 </div>
                 <div class="reveal">
                     <dt>You own it</dt>
-                    <dd>Code, infrastructure, documentation. No lock-in, and no dependency on me to keep the lights on.</dd>
+                    <dd>Code, infrastructure, documentation. No lock-in, and no dependency on us to keep the lights on.</dd>
                 </div>
             </dl>
+            </div>
         </section>
 
         <!-- Process -->
@@ -106,7 +111,7 @@
                 </li>
                 <li class="reveal">
                     <h3>A product</h3>
-                    <p>I build it out, launch it and hand it over with code, docs and infrastructure. Your team runs it without me.</p>
+                    <p>We build it out, launch it and hand it over with code, docs and infrastructure. Your team runs it without us.</p>
                 </li>
             </ol>
         </section>
@@ -117,11 +122,11 @@
             <div class="fit">
                 <div class="reveal">
                     <h3>A good fit</h3>
-                    <p>You know your market and see a specific problem AI could solve. You want something in users' hands this quarter. You would rather work with one accountable person than manage an agency.</p>
+                    <p>You know your market and see a specific problem AI could solve. You want something in users' hands this quarter. You would rather work with one accountable builder than manage an agency.</p>
                 </div>
                 <div class="reveal">
                     <h3>Not a fit</h3>
-                    <p>You need a strategy deck before you need software. You want AI in the pitch, not in the product. Your project needs a team of twenty. I will say so, and point you to one.</p>
+                    <p>You need a strategy deck before you need software. You want AI in the pitch, not in the product. You are shopping for the lowest day rate. Your project needs a team of twenty. We will say so and point you to one.</p>
                 </div>
             </div>
         </section>
@@ -130,9 +135,9 @@
         <section class="contact" id="contact">
             <div class="contact-inner">
                 <div class="contact-copy">
-                    <h2>Tell me what you want to build.</h2>
+                    <h2>Tell us what you want to build.</h2>
                     <a class="contact-mail" href="mailto:tim@tigr.ventures">tim@tigr.ventures</a>
-                    <p>A few sentences are enough. I reply within 48 hours, usually with a proposal for a first call.</p>
+                    <p>A few sentences are enough. We reply within 48 hours, usually with a proposal for a first call. We take on a few projects at a time.</p>
                 </div>
 
                 <form class="form" action="https://formspree.io/f/xlgjwyka" method="POST" id="inquiryForm">
@@ -148,7 +153,7 @@
                 </form>
 
                 <div class="form-success" id="formSuccess" hidden>
-                    <p>Thanks. Your message is in. I will get back to you within 48 hours.</p>
+                    <p>Thanks. Your message is in. We will get back to you within 48 hours.</p>
                 </div>
             </div>
         </section>
@@ -158,7 +163,7 @@
         <div class="footer-inner">
             <p class="footer-brand">
                 <img src="assets/emblem.svg" alt="" width="20" height="20">
-                <span>Tigr Ventures<br>Kuhnkestraße 6, 24118 Kiel, Germany</span>
+                <span>Tigr Ventures UG (haftungsbeschränkt)<br>Kuhnkestraße 6, 24118 Kiel, Germany</span>
             </p>
             <p class="footer-links">
                 <a href="mailto:tim@tigr.ventures">tim@tigr.ventures</a>
