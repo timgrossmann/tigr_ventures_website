@@ -357,8 +357,7 @@ button, input, textarea { font: inherit; color: inherit; }
     align-items: flex-start;
     gap: 14px 32px;
 }
-.footer-brand { display: inline-flex; align-items: flex-start; gap: 12px; }
-.footer-brand img { margin-top: 1px; }
+.footer-brand { display: inline-flex; align-items: center; gap: 12px; }
 .footer-links { display: inline-flex; flex-wrap: wrap; gap: 8px 28px; }
 .footer a:hover { color: var(--white); }
 
