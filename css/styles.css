@@ -13,8 +13,8 @@
     --mauve:   #8a7f8d;
     --wine:    #800020;
     --red:     #d31111;
-    --accent:  var(--wine);        /* single accent; swap here to retheme */
-    --accent-hover: var(--red);
+    --accent:  var(--blush);       /* UI accent on dark surfaces; the video carries the colour */
+    --accent-hover: var(--white);
     --paper:   #f5f4f5;
     --blush:   #fff3f3;
     --white:   #ffffff;
@@ -56,7 +56,7 @@ ol, ul { list-style: none; }
 button, input, textarea { font: inherit; color: inherit; }
 
 ::selection { background: var(--wine); color: var(--blush); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
 /* ---- Type system ---- */
 .mono, .label, .top-nav a, .footer, label {
@@ -75,7 +75,7 @@ button, input, textarea { font: inherit; color: inherit; }
 }
 
 .statement {
-    font-size: clamp(2.4rem, 5.6vw, 5.8rem);
+    font-size: clamp(2.4rem, 6.4vw, 6.4rem);
     font-weight: 700;
     font-variation-settings: 'wdth' 76;
     line-height: 0.96;
@@ -124,7 +124,7 @@ button, input, textarea { font: inherit; color: inherit; }
 }
 
 .brand { display: inline-flex; align-items: center; gap: 12px; color: inherit; }
-.brand img { width: 28px; height: 28px; }
+.mark { display: block; fill: currentColor; flex: none; }
 .brand span { font-weight: 600; font-size: 1rem; letter-spacing: -0.01em; }
 
 .top-nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 44px); }
@@ -147,7 +147,7 @@ button, input, textarea { font: inherit; color: inherit; }
    ------------------------------------------------------------ */
 .hero {
     position: relative;
-    height: 240vh;
+    height: 190vh;
     background: var(--ink-900);
     color: var(--blush);
 }
@@ -162,15 +162,22 @@ button, input, textarea { font: inherit; color: inherit; }
     justify-content: flex-end;
     padding: 0 var(--gutter) clamp(40px, 7vh, 88px);
 }
-.hero-poster, .hero-canvas {
+.hero-media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    will-change: transform;
+}
+.hero-poster, .hero-video, .hero-shade {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
 }
-.hero-poster img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
-.hero-canvas { opacity: 0; transition: opacity 0.6s var(--ease); }
-.hero-canvas.ready { opacity: 1; }
+.hero-poster img, .hero-video { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+.hero-video { opacity: 0; transition: opacity 1.2s var(--ease); }
+.hero-video.ready { opacity: 1; }
+.hero-shade { background: var(--ink-900); opacity: 0; }
 
 .hero-text {
     position: relative;
@@ -223,7 +230,7 @@ button, input, textarea { font: inherit; color: inherit; }
     align-items: center;
     padding: 16px 28px;
     background: var(--accent);
-    color: var(--white);
+    color: var(--ink-900);
     font-weight: 500;
     font-size: 0.95rem;
     border: 0;
@@ -376,14 +383,14 @@ button, input, textarea { font: inherit; color: inherit; }
     display: grid; place-items: center;
     background: transparent; border: 0; cursor: pointer; color: var(--ink-800);
 }
-.modal-close:hover { color: var(--accent); }
+.modal-close:hover { color: var(--wine); }
 .modal-title { font-size: 1.6rem; font-weight: 600; letter-spacing: -0.02em; color: var(--ink-800); }
 .modal-title span { color: var(--mauve); font-weight: 400; }
 .imprint-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 28px; font-size: 0.95rem; }
 .imprint-col h3 { font-family: var(--font-mono); font-size: 0.875rem; font-weight: 400; color: var(--mauve); }
 .imprint-col h4 { margin-top: 20px; font-size: 0.95rem; font-weight: 600; color: var(--ink-800); }
 .imprint-col p { margin-top: 4px; }
-.imprint-col a { border-bottom: 1px solid var(--accent); }
+.imprint-col a { border-bottom: 1px solid currentColor; }
 
 /* ------------------------------------------------------------
    Motion
@@ -395,12 +402,12 @@ button, input, textarea { font: inherit; color: inherit; }
 
 .no-js .reveal, .no-js .hero-text, .no-js .hero-hint { opacity: 1; transform: none; animation: none; }
 .no-js .hero { height: 100vh; }
-.no-js .hero-canvas { display: none; }
+.no-js .hero-video { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .hero { height: 100vh; }
-    .hero-canvas { display: none; }
+    .hero-video { display: none; }
     .hero-text, .hero-hint { animation: none; opacity: 1; transform: none; }
     .reveal { opacity: 1; transform: none; transition: none; }
 }
@@ -420,7 +427,7 @@ button, input, textarea { font: inherit; color: inherit; }
     .top { padding: 16px var(--gutter); }
     .top-nav a:not(:last-child) { display: none; }
 
-    .hero { height: 200vh; }
+    .hero { height: 170vh; }
     .hero-stage { padding-bottom: 56px; }
     .hero-title { font-size: clamp(3.2rem, 17.5vw, 6rem); }
     .hero-row { gap: 24px; margin-top: 20px; }

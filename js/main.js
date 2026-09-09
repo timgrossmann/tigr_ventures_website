@@ -11,7 +11,6 @@
     var hero = document.getElementById('hero');
     var stage = hero && hero.querySelector('.hero-stage');
     var heroText = hero && hero.querySelector('.hero-text');
-    var canvas = hero && hero.querySelector('.hero-canvas');
 
     // ------------------------------------------------------------
     // Header theme: light when a light section sits under the bar
@@ -27,92 +26,29 @@
     }
 
     // ------------------------------------------------------------
-    // Hero sequence: frames scrubbed by scroll progress
+    // Hero video: looping clip, scroll adds a slow zoom and a dim
     // ------------------------------------------------------------
-    var frames = [];
-    var loaded = [];
-    var frameCount = hero ? parseInt(hero.dataset.frames, 10) || 0 : 0;
-    var seqBase = hero ? hero.dataset.seq : '';
-    var seqSize = window.innerWidth <= 760 ? 720 : 1280;
-    var ctx = canvas && canvas.getContext('2d', { alpha: false });
-    var dpr = Math.min(window.devicePixelRatio || 1, 2);
-    var current = -1;
+    var video = hero && hero.querySelector('.hero-video');
+    var media = hero && hero.querySelector('.hero-media');
+    var shade = hero && hero.querySelector('.hero-shade');
     var progress = 0;
-    var useSequence = !!(canvas && ctx && frameCount && !reduceMotion);
 
-    function framePath(i) {
-        var n = ('00' + i).slice(-3);
-        return seqBase + '/' + seqSize + '/f-' + n + '.webp';
-    }
-
-    function sizeCanvas() {
-        var w = stage.clientWidth, h = stage.clientHeight;
-        canvas.width = Math.round(w * dpr);
-        canvas.height = Math.round(h * dpr);
-        canvas.style.width = w + 'px';
-        canvas.style.height = h + 'px';
-        current = -1;
-        draw();
-    }
-
-    function nearestLoaded(i) {
-        if (loaded[i]) return i;
-        for (var d = 1; d < frameCount; d++) {
-            if (loaded[i - d]) return i - d;
-            if (loaded[i + d]) return i + d;
+    (function startVideo() {
+        if (!video || reduceMotion) return;
+        var conn = navigator.connection;
+        if (conn && (conn.saveData || /2g/.test(conn.effectiveType || ''))) return;
+        var small = window.innerWidth <= 760;
+        video.src = small && video.dataset.srcSmall ? video.dataset.srcSmall : video.dataset.src;
+        video.load();
+        var shown = false;
+        function show() {
+            if (shown) return;
+            shown = true;
+            video.play().then(function () { video.classList.add('ready'); }).catch(function () {});
         }
-        return -1;
-    }
-
-    function draw() {
-        if (!useSequence) return;
-        var target = Math.round(progress * (frameCount - 1));
-        var idx = nearestLoaded(target);
-        if (idx < 0 || idx === current) return;
-        current = idx;
-        var img = frames[idx];
-        var cw = canvas.width, ch = canvas.height;
-        var scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
-        var dw = img.naturalWidth * scale, dh = img.naturalHeight * scale;
-        // anchor slightly right so the cuts stay in frame on narrow screens
-        var dx = (cw - dw) * 0.7, dy = (ch - dh) * 0.5;
-        ctx.drawImage(img, dx, dy, dw, dh);
-        if (!canvas.classList.contains('ready')) canvas.classList.add('ready');
-    }
-
-    // Load order: first, last, then successive midpoints, so a partial
-    // download already scrubs coarsely.
-    function loadOrder(n) {
-        var order = [0, n - 1], seen = {};
-        seen[0] = seen[n - 1] = true;
-        var queue = [[0, n - 1]];
-        while (queue.length) {
-            var pair = queue.shift(), a = pair[0], b = pair[1];
-            var m = (a + b) >> 1;
-            if (m === a || m === b) continue;
-            if (!seen[m]) { seen[m] = true; order.push(m); }
-            queue.push([a, m], [m, b]);
-        }
-        return order;
-    }
-
-    function loadFrames() {
-        var order = loadOrder(frameCount);
-        var inFlight = 0, next = 0;
-        function pump() {
-            while (inFlight < 4 && next < order.length) {
-                (function (i) {
-                    var img = new Image();
-                    img.decoding = 'async';
-                    img.onload = function () { frames[i] = img; loaded[i] = true; inFlight--; draw(); pump(); };
-                    img.onerror = function () { inFlight--; pump(); };
-                    img.src = framePath(i);
-                })(order[next++]);
-                inFlight++;
-            }
-        }
-        pump();
-    }
+        video.addEventListener('canplay', show, { once: true });
+        video.addEventListener('playing', function () { video.classList.add('ready'); }, { once: true });
+    })();
 
     var textSettled = false;
     if (heroText) {
@@ -131,6 +67,11 @@
         progress = p;
         hero.classList.toggle('scrolled', p > 0.03);
 
+        if (media && !reduceMotion) {
+            media.style.transform = 'scale(' + (1 + p * 0.1).toFixed(4) + ')';
+            shade.style.opacity = (p * 0.55).toFixed(3);
+        }
+
         // Text holds, then lifts and fades over the last third of the track
         if (heroText && !reduceMotion && (textSettled || p > 0.05)) {
             if (!textSettled) { heroText.classList.add('settled'); textSettled = true; }
@@ -139,7 +80,6 @@
             heroText.style.opacity = String(1 - eased);
             heroText.style.transform = 'translateY(' + (-eased * 48) + 'px)';
         }
-        draw();
     }
 
     var ticking = false;
@@ -153,15 +93,8 @@
         });
     }
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', function () {
-        if (useSequence) sizeCanvas();
-        onScroll();
-    });
+    window.addEventListener('resize', onScroll);
 
-    if (useSequence) {
-        sizeCanvas();
-        loadFrames();
-    }
     updateHero();
     updateHeader();
 

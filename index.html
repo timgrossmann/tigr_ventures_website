@@ -22,10 +22,13 @@
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 </head>
 <body>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="mark" viewBox="0 0 32 32"><path d="M4.97 18.83 Q14.44 14.44 18.83 4.97 Q9.35 9.35 4.97 18.83 Z M9.07 22.93 Q18.55 18.55 22.93 9.07 Q13.45 13.45 9.07 22.93 Z M13.17 27.03 Q22.65 22.65 27.03 13.17 Q17.56 17.56 13.17 27.03 Z"/></symbol>
+    </svg>
 
     <header class="top" id="top">
         <a href="#" class="brand" aria-label="Tigr Ventures, home">
-            <img src="assets/emblem.svg" alt="" width="28" height="28">
+            <svg class="mark" width="30" height="30" aria-hidden="true"><use href="#mark"/></svg>
             <span>Tigr Ventures</span>
         </a>
         <nav class="top-nav" aria-label="Main">
@@ -37,13 +40,17 @@
 
     <main>
         <!-- Hero: pinned stage, sequence scrubbed by scroll -->
-        <section class="hero" id="hero" data-frames="72" data-seq="assets/seq">
+        <section class="hero" id="hero">
             <div class="hero-stage">
-                <picture class="hero-poster">
-                    <source srcset="assets/hero-poster-768.webp 768w, assets/hero-poster.webp 1536w" sizes="100vw" type="image/webp">
-                    <img src="assets/hero-poster.webp" alt="" width="1536" height="1024" fetchpriority="high">
-                </picture>
-                <canvas class="hero-canvas" aria-hidden="true"></canvas>
+                <div class="hero-media">
+                    <picture class="hero-poster">
+                        <source srcset="assets/hero-poster-768.webp 768w, assets/hero-poster.webp 1536w" sizes="100vw" type="image/webp">
+                        <img src="assets/hero-poster.webp" alt="" width="1536" height="1024" fetchpriority="high">
+                    </picture>
+                    <video class="hero-video" muted playsinline loop autoplay preload="none" aria-hidden="true" tabindex="-1"
+                           data-src="assets/hero-loop-1280.mp4" data-src-small="assets/hero-loop-720.mp4"></video>
+                    <div class="hero-shade"></div>
+                </div>
 
                 <div class="hero-text">
                     <h1 class="hero-title">AI Product Builder</h1>
@@ -78,7 +85,7 @@
 
         <!-- Statement -->
         <section class="statement-block" id="how">
-            <p class="statement reveal"><span>One builder per product.</span> <span>No handoffs. Working software in weeks.</span></p>
+            <p class="statement reveal"><span>One builder per product.</span> <span>No handoffs.</span> <span>Working software in weeks.</span></p>
             <div class="points">
             <dl class="cols cols-3">
                 <div class="reveal">
@@ -162,7 +169,7 @@
     <footer class="footer">
         <div class="footer-inner">
             <p class="footer-brand">
-                <img src="assets/emblem.svg" alt="" width="20" height="20">
+                <svg class="mark" width="20" height="20" aria-hidden="true"><use href="#mark"/></svg>
                 <span>Tigr Ventures UG (haftungsbeschränkt)<br>Kuhnkestraße 6, 24118 Kiel, Germany</span>
             </p>
             <p class="footer-links">
