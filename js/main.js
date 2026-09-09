@@ -71,23 +71,18 @@
         progress = p;
         hero.classList.toggle('scrolled', p > 0.03);
 
-        // Object drifts up and back a little faster than the page, then thins out
         if (object && !reduceMotion && (objectSettled || p > 0.05)) {
             if (!objectSettled) { object.style.animation = 'none'; objectSettled = true; }
-            var lift = -p * 22;               // vh
-            var scale = 1 - p * 0.08;
-            var fade = Math.min(1, Math.max(0, (p - 0.55) / 0.4));
+            var lift = -p * 16;               // vh, faster than the text
+            var scale = 1 - p * 0.05;
             object.style.transform = 'translateY(calc(-50% + ' + lift.toFixed(2) + 'vh)) scale(' + scale.toFixed(4) + ')';
-            object.style.opacity = String(1 - fade * fade);
         }
 
-        // Text holds, then lifts and fades over the last third of the track
+        // Nothing fades out: the next section slides over the stage like a
+        // curtain. Text and object only drift upward at different speeds.
         if (heroText && !reduceMotion && (textSettled || p > 0.05)) {
             if (!textSettled) { heroText.classList.add('settled'); textSettled = true; }
-            var t = Math.min(1, Math.max(0, (p - 0.62) / 0.3));
-            var eased = t * t * (3 - 2 * t);
-            heroText.style.opacity = String(1 - eased);
-            heroText.style.transform = 'translateY(' + (-eased * 48) + 'px)';
+            heroText.style.transform = 'translateY(' + (-p * 9).toFixed(2) + 'vh)';
         }
     }
 
@@ -195,7 +190,4 @@
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
     }
 
-    // Footer year
-    var year = document.querySelector('.footer-year');
-    if (year) year.textContent = new Date().getFullYear();
 })();

@@ -148,7 +148,7 @@ button, input, textarea { font: inherit; color: inherit; }
    ------------------------------------------------------------ */
 .hero {
     position: relative;
-    height: 190vh;
+    height: 150vh;
     background: var(--ink-900);
     color: var(--blush);
 }
@@ -256,6 +256,8 @@ button, input, textarea { font: inherit; color: inherit; }
 /* ------------------------------------------------------------
    Blocks: mono label left, content right
    ------------------------------------------------------------ */
+.block, .statement-block, .contact { position: relative; background: var(--blush); }
+.contact { background: var(--ink-900); }
 .block {
     display: grid;
     grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
@@ -440,7 +442,7 @@ button, input, textarea { font: inherit; color: inherit; }
     .top { padding: 16px var(--gutter); }
     .top-nav a:not(:last-child) { display: none; }
 
-    .hero { height: 170vh; }
+    .hero { height: 140vh; }
     .hero-stage { padding-bottom: 56px; }
     .hero-object { top: 34%; right: auto; left: 50%; width: min(92vw, 52vh); margin-left: calc(min(92vw, 52vh) / -2); }
     .hero-title { font-size: clamp(2.9rem, 15.5vw, 5.4rem); }
