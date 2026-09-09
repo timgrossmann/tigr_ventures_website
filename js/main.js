@@ -29,8 +29,11 @@
     // Hero video: looping clip, scroll adds a slow zoom and a dim
     // ------------------------------------------------------------
     var video = hero && hero.querySelector('.hero-video');
-    var media = hero && hero.querySelector('.hero-media');
-    var shade = hero && hero.querySelector('.hero-shade');
+    var object = hero && hero.querySelector('.hero-object');
+    var objectSettled = false;
+    if (object) {
+        object.addEventListener('animationend', function () { objectSettled = true; updateHero(); }, { once: true });
+    }
     var progress = 0;
 
     (function startVideo() {
@@ -40,6 +43,7 @@
         var small = window.innerWidth <= 760;
         video.src = small && video.dataset.srcSmall ? video.dataset.srcSmall : video.dataset.src;
         video.load();
+        video.playbackRate = 0.6;   // the clip is rendered fast; slow it to a calm 11 s loop
         var shown = false;
         function show() {
             if (shown) return;
@@ -67,9 +71,14 @@
         progress = p;
         hero.classList.toggle('scrolled', p > 0.03);
 
-        if (media && !reduceMotion) {
-            media.style.transform = 'scale(' + (1 + p * 0.1).toFixed(4) + ')';
-            shade.style.opacity = (p * 0.55).toFixed(3);
+        // Object drifts up and back a little faster than the page, then thins out
+        if (object && !reduceMotion && (objectSettled || p > 0.05)) {
+            if (!objectSettled) { object.style.animation = 'none'; objectSettled = true; }
+            var lift = -p * 22;               // vh
+            var scale = 1 - p * 0.08;
+            var fade = Math.min(1, Math.max(0, (p - 0.55) / 0.4));
+            object.style.transform = 'translateY(calc(-50% + ' + lift.toFixed(2) + 'vh)) scale(' + scale.toFixed(4) + ')';
+            object.style.opacity = String(1 - fade * fade);
         }
 
         // Text holds, then lifts and fades over the last third of the track

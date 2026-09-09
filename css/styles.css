@@ -67,12 +67,13 @@ button, input, textarea { font: inherit; color: inherit; }
 }
 
 .hero-title {
-    font-size: clamp(3.6rem, 14.55vw, 15.5rem);
+    font-size: clamp(3.2rem, 11.2vw, 12rem);
     font-weight: 800;
     font-variation-settings: 'wdth' 72;
-    line-height: 0.9;
+    line-height: 0.88;
     letter-spacing: -0.035em;
 }
+.hero-title span { display: block; }
 
 .statement {
     font-size: clamp(2.4rem, 6.4vw, 6.4rem);
@@ -157,27 +158,38 @@ button, input, textarea { font: inherit; color: inherit; }
     height: 100vh;
     height: 100svh;
     overflow: hidden;
+    background: var(--ink-900);   /* backdrop for the object's blend */
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 0 var(--gutter) clamp(40px, 7vh, 88px);
 }
-.hero-media {
+.hero-object {
     position: absolute;
-    inset: 0;
-    overflow: hidden;
-    will-change: transform;
+    z-index: 1;
+    top: 44%;
+    right: calc(var(--gutter) - 2vw);
+    width: min(50vw, 84vh);
+    aspect-ratio: 1 / 1;
+    transform: translateY(-50%);
+    will-change: transform, opacity;
+    opacity: 0;
+    animation: fade 1.6s var(--ease) 0.1s forwards;
+    mix-blend-mode: lighten;      /* the clip's flat black ground dissolves into the page */
+    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%);
+    mask-composite: intersect;
 }
-.hero-poster, .hero-video, .hero-shade {
+.hero-object-still, .hero-video {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
-.hero-poster img, .hero-video { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
 .hero-video { opacity: 0; transition: opacity 1.2s var(--ease); }
 .hero-video.ready { opacity: 1; }
-.hero-shade { background: var(--ink-900); opacity: 0; }
 
 .hero-text {
     position: relative;
@@ -399,7 +411,8 @@ button, input, textarea { font: inherit; color: inherit; }
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
 .reveal.visible { opacity: 1; transform: none; }
 
-.no-js .reveal, .no-js .hero-text, .no-js .hero-hint { opacity: 1; transform: none; animation: none; }
+.no-js .reveal, .no-js .hero-text, .no-js .hero-hint, .no-js .hero-object { opacity: 1; transform: none; animation: none; }
+.no-js .hero-object { transform: translateY(-50%); }
 .no-js .hero { height: 100vh; }
 .no-js .hero-video { display: none; }
 
@@ -408,6 +421,7 @@ button, input, textarea { font: inherit; color: inherit; }
     .hero { height: 100vh; }
     .hero-video { display: none; }
     .hero-text, .hero-hint { animation: none; opacity: 1; transform: none; }
+    .hero-object { animation: none; opacity: 1; }
     .reveal { opacity: 1; transform: none; transition: none; }
 }
 
@@ -428,7 +442,9 @@ button, input, textarea { font: inherit; color: inherit; }
 
     .hero { height: 170vh; }
     .hero-stage { padding-bottom: 56px; }
-    .hero-title { font-size: clamp(3.2rem, 17.5vw, 6rem); }
+    .hero-object { top: 34%; right: auto; left: 50%; width: min(92vw, 52vh); margin-left: calc(min(92vw, 52vh) / -2); }
+    .hero-title { font-size: clamp(2.9rem, 15.5vw, 5.4rem); }
+    .hero-title span { display: inline; }
     .hero-row { gap: 24px; margin-top: 20px; }
     .hero-lead { max-width: none; }
     .hero-hint { display: none; }
