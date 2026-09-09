@@ -15,14 +15,14 @@
     // ------------------------------------------------------------
     // Header theme: light when a light section sits under the bar
     // ------------------------------------------------------------
-    var darkSections = Array.prototype.slice.call(document.querySelectorAll('.hero, .contact, .footer'));
+    var lightSections = Array.prototype.slice.call(document.querySelectorAll('.block, .statement-block'));
     function updateHeader() {
         var y = top.offsetHeight / 2;
-        var onDark = darkSections.some(function (el) {
+        var onLight = lightSections.some(function (el) {
             var r = el.getBoundingClientRect();
             return r.top <= y && r.bottom > y;
         });
-        top.classList.toggle('on-light', !onDark);
+        top.classList.toggle('on-light', onLight);
     }
 
     // ------------------------------------------------------------
@@ -66,7 +66,7 @@
     function updateHero() {
         if (!hero) return;
         var rect = hero.getBoundingClientRect();
-        var track = hero.offsetHeight - window.innerHeight;
+        var track = hero.offsetHeight - window.innerHeight * 2;   // pinned phase only
         var p = track > 0 ? Math.min(1, Math.max(0, -rect.top / track)) : 0;
         progress = p;
         hero.classList.toggle('scrolled', p > 0.03);

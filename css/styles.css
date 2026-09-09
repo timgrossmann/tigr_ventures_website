@@ -27,6 +27,7 @@
 
     --gutter: clamp(20px, 4vw, 64px);
     --max: 1360px;
+    --side: max(var(--gutter), calc((100vw - var(--max)) / 2));   /* centres a 1360px column, full-bleed background */
     --section-pad: clamp(88px, 12vh, 168px);
 
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -148,7 +149,10 @@ button, input, textarea { font: inherit; color: inherit; }
    ------------------------------------------------------------ */
 .hero {
     position: relative;
-    height: 150vh;
+    z-index: 0;
+    /* 50vh of pinned parallax, then 100vh during which the next section
+       slides over the still-pinned stage like a curtain */
+    height: 250vh;
     background: var(--ink-900);
     color: var(--blush);
 }
@@ -256,16 +260,15 @@ button, input, textarea { font: inherit; color: inherit; }
 /* ------------------------------------------------------------
    Blocks: mono label left, content right
    ------------------------------------------------------------ */
-.block, .statement-block, .contact { position: relative; background: var(--blush); }
-.contact { background: var(--ink-900); }
+.block, .statement-block, .contact, .footer { position: relative; z-index: 1; background: var(--blush); }
+.contact, .footer { background: var(--ink-900); }
+.hero + .block { margin-top: -100vh; }
 .block {
     display: grid;
     grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
     gap: var(--gutter);
-    padding: var(--section-pad) var(--gutter);
+    padding: var(--section-pad) var(--side);
     border-top: 1px solid var(--rule);
-    max-width: var(--max);
-    margin: 0 auto;
 }
 .hero + .block { border-top: 0; }
 .label { color: var(--mauve); align-self: start; position: sticky; top: 96px; }
@@ -277,9 +280,7 @@ button, input, textarea { font: inherit; color: inherit; }
 
 /* Statement section: full width interrupt, points on the content grid */
 .statement-block {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: var(--section-pad) var(--gutter);
+    padding: var(--section-pad) var(--side);
     border-top: 1px solid var(--rule);
 }
 .statement { max-width: none; margin-left: -0.03em; }
@@ -308,7 +309,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .contact {
     background: var(--ink-900);
     color: var(--blush);
-    padding: var(--section-pad) var(--gutter);
+    padding: var(--section-pad) var(--side);
 }
 .contact-inner {
     max-width: var(--max);
@@ -359,7 +360,7 @@ button, input, textarea { font: inherit; color: inherit; }
     background: var(--ink-900);
     color: rgba(255, 243, 243, 0.62);
     border-top: 1px solid var(--rule-dark);
-    padding: 40px var(--gutter) 44px;
+    padding: 40px var(--side) 44px;
     line-height: 1.6;
 }
 .footer-inner {
@@ -442,7 +443,7 @@ button, input, textarea { font: inherit; color: inherit; }
     .top { padding: 16px var(--gutter); }
     .top-nav a:not(:last-child) { display: none; }
 
-    .hero { height: 140vh; }
+    .hero { height: 240vh; }
     .hero-stage { padding-bottom: 56px; }
     .hero-object { top: 34%; right: auto; left: 50%; width: min(92vw, 52vh); margin-left: calc(min(92vw, 52vh) / -2); }
     .hero-title { font-size: clamp(2.9rem, 15.5vw, 5.4rem); }
