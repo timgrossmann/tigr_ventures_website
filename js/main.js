@@ -16,13 +16,20 @@
     // Header theme: light when a light section sits under the bar
     // ------------------------------------------------------------
     var lightSections = Array.prototype.slice.call(document.querySelectorAll('.block, .statement-block'));
-    function updateHeader() {
-        var y = top.offsetHeight / 2;
-        var onLight = lightSections.some(function (el) {
+    var darkBands = Array.prototype.slice.call(document.querySelectorAll('.contact, .footer'));
+    function under(list, y) {
+        return list.some(function (el) {
             var r = el.getBoundingClientRect();
-            return r.top <= y && r.bottom > y;
+            return r.top <= y + 1 && r.bottom > y;
         });
+    }
+    function updateHeader() {
+        // bottom edge of the bar, so nav jumps (which land here) get the light bar
+        var y = top.offsetHeight;
+        var onLight = under(lightSections, y);
         top.classList.toggle('on-light', onLight);
+        // below the hero, dark content scrolls under the bar: give it a solid ground
+        top.classList.toggle('on-dark', !onLight && under(darkBands, y));
     }
 
     // ------------------------------------------------------------
@@ -112,7 +119,9 @@
             var target = document.querySelector(href);
             if (!target) return;
             e.preventDefault();
-            var y = target.getBoundingClientRect().top + window.scrollY - top.offsetHeight;
+            // floor the bar's fractional height so the section tucks under it
+            // instead of leaving a sub-pixel seam of the pinned hero
+            var y = target.getBoundingClientRect().top + window.scrollY - Math.floor(top.getBoundingClientRect().height);
             window.scrollTo({ top: y, behavior: reduceMotion ? 'auto' : 'smooth' });
         });
     });
