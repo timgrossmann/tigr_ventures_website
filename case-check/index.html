@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a1118">
+<meta name="description" content="Dein Workflow-Check: Impact, Feasibility und Go/No-Go. Lokal speichern, offenen Fragen nachgehen und den nächsten Schritt festlegen.">
+<title>Dein Workflow-Check · TIGR Ventures</title>
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="./style.css">
+<script src="./check.js" defer>
+</script>
+</head>
+<body>
+<a class="skip" href="#check">Zum Check</a>
+<header class="mast">
+<a class="brand" href="/">
+<svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+<path d="M4.97 18.83 Q14.44 14.44 18.83 4.97 Q9.35 9.35 4.97 18.83 Z M9.07 22.93 Q18.55 18.55 22.93 9.07 Q13.45 13.45 9.07 22.93 Z M13.17 27.03 Q22.65 22.65 27.03 13.17 Q17.56 17.56 13.17 27.03 Z"/>
+</svg>Tigr Ventures</a>
+<span class="eyebrow">Dein Case</span>
+</header>
+<main>
+<div class="intro">
+<p class="eyebrow">Ein Workflow. Ein nächster Schritt.</p>
+<h1>Welcher Case<br>kommt zuerst?</h1>
+<p>Du brauchst keinen Durchbruch.<br>Du brauchst einen Workflow.</p>
+<a class="button light" href="#check">Meinen Case prüfen <span aria-hidden="true">↓</span>
+</a>
+</div>
+<div class="workspace">
+<div class="savebar">
+<p id="save-status" role="status" aria-live="polite">Speicher wird geprüft …</p>
+<span id="progress">0 / 11 Fragen beantwortet</span>
+</div>
+<p class="privacy">Deine Eingaben bleiben in diesem Browser auf diesem Gerät. Kein Login, keine automatische Übermittlung. Gelöschte Browserdaten oder privates Surfen können deinen Check entfernen.</p>
+<noscript>
+<p>Bitte aktiviere JavaScript, um automatisch zu speichern, den Aufwand zu berechnen und deinen Check zu exportieren. Ohne JavaScript werden Eingaben nicht gespeichert.</p>
+</noscript>
+<form id="check" autocomplete="off">
+<section class="section" aria-labelledby="workflow-heading">
+<p class="eyebrow">01 · Ausgangspunkt</p>
+<h2 id="workflow-heading">Dein Workflow</h2>
+<p>Ein konkreter Ablauf reicht. Wer wartet auf welches Ergebnis?</p>
+<label class="field" for="workflow">Mein Workflow<textarea id="workflow" name="workflow" rows="3" maxlength="5000">
+</textarea>
+</label>
+<label class="field" for="waiting">Wer wartet worauf?<textarea id="waiting" name="waiting" rows="3" maxlength="5000">
+</textarea>
+</label>
+<fieldset class="patterns">
+<legend>Welches Pattern erkennst du?</legend>
+<p class="hint">Mehrere sind möglich. Wenn du unsicher bist, lass die Auswahl offen.</p>
+<label class="pattern">
+<input type="checkbox" name="pattern0" value="Transformation">
+<span>
+<strong>Transformation</strong>
+<small>Inhalte in eine andere Form bringen, etwa eine E-Mail in strukturierte Daten.</small>
+</span>
+</label>
+<label class="pattern">
+<input type="checkbox" name="pattern1" value="Search &amp; Synthesis">
+<span>
+<strong>Search &amp; Synthesis</strong>
+<small>Informationen finden und zu einer nachvollziehbaren Antwort zusammenführen.</small>
+</span>
+</label>
+<label class="pattern">
+<input type="checkbox" name="pattern2" value="Rule-based Review">
+<span>
+<strong>Rule-based Review</strong>
+<small>Einen Vorgang anhand festgelegter Regeln prüfen, etwa auf Vollständigkeit.</small>
+</span>
+</label>
+<label class="pattern">
+<input type="checkbox" name="pattern3" value="Bottleneck">
+<span>
+<strong>Bottleneck</strong>
+<small>Eine Engstelle im Ablauf erkennen: Wo staut sich Arbeit oder wartet jemand?</small>
+</span>
+</label>
+</fieldset>
+</section>
+<section class="section" aria-labelledby="baseline-heading">
+<p class="eyebrow">02 · Nachrechnen</p>
+<h2 id="baseline-heading">Baseline &amp; Cross-Check</h2>
+<label class="field" for="period">Zeitraum<input id="period" name="period" maxlength="500" placeholder="z. B. September 2026">
+</label>
+<div class="pair">
+<label class="field" for="cases">Anzahl Cases im Zeitraum<input id="cases" name="cases" maxlength="500" inputmode="numeric" aria-describedby="calculation">
+</label>
+<label class="field" for="minutes">Minuten je Case<input id="minutes" name="minutes" maxlength="500" inputmode="decimal" aria-describedby="calculation">
+</label>
+</div>
+<div class="calculation" id="calculation">
+<span>Anzahl Cases × Minuten ÷ 60</span>
+<output id="hours" for="cases minutes">Noch keine Stunden berechnet</output>
+</div>
+<p class="hint">Aufwand ist noch keine Einsparung. Vergleiche später denselben Workflow einschließlich Prüfung und Nacharbeit.</p>
+<label class="field" for="crosscheck">Cross-Check: Systemzahl und offene Differenz<textarea id="crosscheck" name="crosscheck" rows="3" maxlength="5000">
+</textarea>
+</label>
+</section>
+<div class="check-intro">
+<p class="eyebrow">03 · Voraussetzungen prüfen</p>
+<h2>Dein Workflow-Check</h2>
+<p>Ja = belegt · Nein = fehlt · Offen = noch prüfen</p>
+<p class="hint">Wähle jede Antwort bewusst. Eine leere Antwort bleibt leer.</p>
+</div>
+<section class="section questions" aria-labelledby="group-0">
+<h2 id="group-0">Impact</h2>
+<fieldset class="question">
+<legend>Läuft der Workflow häufig?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q0" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q0" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q0" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+<fieldset class="question">
+<legend>Wartet jemand auf das Ergebnis?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q1" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q1" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q1" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+<fieldset class="question">
+<legend>Ist klar, wie wir Nutzen und Qualität prüfen?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q2" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q2" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q2" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+</section>
+<section class="section questions" aria-labelledby="group-3">
+<h2 id="group-3">Feasibility</h2>
+<fieldset class="question">
+<legend>Liegen die nötigen Daten digital vor?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q3" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q3" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q3" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+<fieldset class="question">
+<legend>Gibt es Test-Cases mit geprüften Ergebnissen?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q4" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q4" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q4" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+<fieldset class="question">
+<legend>Gibt es einen Owner für die Qualität?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q5" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q5" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q5" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+<fieldset class="question">
+<legend>Nutzt eine benannte Person den Test?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q6" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q6" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q6" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+</section>
+<section class="section questions" aria-labelledby="group-7">
+<h2 id="group-7">Go/No-Go</h2>
+<fieldset class="question">
+<legend>Sind Zweck, Daten und Rollen geklärt?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q7" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q7" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q7" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+<fieldset class="question">
+<legend>Ist die rechtliche Einordnung geprüft?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q8" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q8" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q8" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+<fieldset class="question">
+<legend>Ist die nötige Transparenz geklärt?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q9" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q9" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q9" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+<fieldset class="question">
+<legend>Sind Kontrolle und Audit Trail geregelt?</legend>
+<div class="answers">
+<label>
+<input type="radio" name="q10" value="Ja">
+<span>Ja</span>
+</label>
+<label>
+<input type="radio" name="q10" value="Nein">
+<span>Nein</span>
+</label>
+<label>
+<input type="radio" name="q10" value="Offen">
+<span>Offen</span>
+</label>
+</div>
+</fieldset>
+</section>
+<section class="section" aria-labelledby="next-heading">
+<p class="eyebrow">04 · Deine Entscheidung</p>
+<h2 id="next-heading">Mein Next Step</h2>
+<p>Offene Voraussetzungen zuerst klären. Deine Antworten ergeben keine automatische Eignungs- oder Rechtsfreigabe.</p>
+<fieldset class="decision">
+<legend>Wie gehst du weiter?</legend>
+<label class="pattern">
+<input type="radio" name="decision" value="STARTEN: Pilot">
+<strong>STARTEN: Pilot</strong>
+</label>
+<label class="pattern">
+<input type="radio" name="decision" value="VORBEREITEN">
+<strong>VORBEREITEN</strong>
+</label>
+<label class="pattern">
+<input type="radio" name="decision" value="NICHT SO">
+<strong>NICHT SO</strong>
+</label>
+</fieldset>
+<label class="field" for="first">Was kläre oder teste ich zuerst?<textarea id="first" name="first" rows="3" maxlength="5000">
+</textarea>
+</label>
+<div class="pair">
+<label class="field" for="who">Mit wem?<input id="who" name="who" maxlength="500" >
+</label>
+<label class="field" for="when">Bis wann prüfen wir erneut?<input id="when" name="when" maxlength="500" type="date">
+</label>
+</div>
+</section>
+</form>
+<section class="section export" aria-labelledby="export-heading">
+<p class="eyebrow">05 · Mitnehmen oder besprechen</p>
+<h2 id="export-heading">Dein Check bleibt deiner.</h2>
+<p>Auch ein unvollständiger Check ist hilfreich. Nimm ihn mit ins nächste Gespräch.</p>
+<div class="actions">
+<button type="button" id="copy">Check kopieren</button>
+<button type="button" id="download">Als Text herunterladen</button>
+</div>
+<p id="export-status" role="status">
+</p>
+<details id="preview">
+<summary>Text ansehen und bei Bedarf manuell kopieren</summary>
+<label class="field" for="export-text">Dein Check als Text<textarea id="export-text" rows="12" readonly>
+</textarea>
+</label>
+</details>
+<div class="contact">
+<h3>Ein zweiter Blick auf deinen Case?</h3>
+<p>Eine Seite Feedback · kostenlos · innerhalb einer Woche</p>
+<p class="hint">Die E-Mail wird in deinem Mailprogramm vorbereitet. Prüfe und ergänze sie dort; erst du sendest sie an tim@tigr.ventures. Den Check bitte als heruntergeladene Textdatei anhängen oder hineinkopieren.</p>
+<a class="button light" id="email" href="mailto:tim@tigr.ventures?subject=Mein%20Workflow-Check&amp;body=Hallo%20Tim%2C%0A%0Aich%20m%C3%B6chte%20deinen%20Blick%20auf%20meinen%20Workflow-Check.%20Meinen%20Check%20f%C3%BCge%20ich%20vor%20dem%20Senden%20hinzu.%0A">E-Mail vorbereiten ↗</a>
+</div>
+<button class="reset" id="reset" type="button">Check zurücksetzen</button>
+</section>
+</div>
+</main>
+<footer>
+<a href="/">Tigr Ventures</a>
+<a href="/#imprint">Impressum</a>
+</footer>
+<dialog id="reset-dialog" aria-labelledby="reset-title">
+<h2 id="reset-title">Check wirklich löschen?</h2>
+<p>Alle Eingaben dieses Checks werden aus diesem Browser entfernt. Lade vorher eine Kopie herunter, wenn du sie behalten möchtest.</p>
+<div class="actions">
+<button id="cancel-reset" type="button" autofocus>Behalten</button>
+<button id="confirm-reset" type="button">Ja, Check löschen</button>
+</div>
+</dialog>
+</body>
+</html>
